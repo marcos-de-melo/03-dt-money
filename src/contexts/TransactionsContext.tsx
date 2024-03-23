@@ -18,7 +18,7 @@ interface TransactionsProviderProps {
 
 export const TransactionsContext = createContext({} as TransactionContextType);
 
-export function TransactionsProvider({ children }: TransactionsProviderProps){
+export function TransactionsProvider({ children }: TransactionsProviderProps) {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   async function loadTransactions() {
     const response = await fetch("http://localhost:3000/transactions");
@@ -29,9 +29,9 @@ export function TransactionsProvider({ children }: TransactionsProviderProps){
     loadTransactions();
   }, []);
 
-return(
-  <TransactionsContext.Provider value={{ transactions }}>
-    {children}
-  </TransactionsContext.Provider>
-)
+  return (
+    <TransactionsContext.Provider value={{ transactions }}>
+      {children}
+    </TransactionsContext.Provider>
+  );
 }
